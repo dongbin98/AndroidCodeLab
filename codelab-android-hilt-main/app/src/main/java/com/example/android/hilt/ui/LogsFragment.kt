@@ -30,14 +30,20 @@ import com.example.android.hilt.R
 import com.example.android.hilt.data.Log
 import com.example.android.hilt.data.LoggerLocalDataSource
 import com.example.android.hilt.util.DateFormatter
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 /**
- * Fragment that displays the database logs.
+ * Android 클래스에 @AndroidEntryPoint 주석을 달면 Android 클래스 수명 주기를 따르는 종속 항목 컨테이너가 생성됩니다.
  */
+@AndroidEntryPoint
 class LogsFragment : Fragment() {
 
-    private lateinit var logger: LoggerLocalDataSource
-    private lateinit var dateFormatter: DateFormatter
+    /**
+     * 필드 삽입
+     */
+    @Inject lateinit var logger: LoggerLocalDataSource
+    @Inject lateinit var dateFormatter: DateFormatter
 
     private lateinit var recyclerView: RecyclerView
 
@@ -57,15 +63,17 @@ class LogsFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
-        populateFields(context)
     }
 
-    private fun populateFields(context: Context) {
-        logger = (context.applicationContext as LogApplication).serviceLocator.loggerLocalDataSource
-        dateFormatter =
-            (context.applicationContext as LogApplication).serviceLocator.provideDateFormatter()
-    }
+//    private fun populateFields(context: Context) {
+//        /**
+//         * ServiceLocator를 사용하여 직접 인스턴스를 채우지 않고 Hilt를 이용하여 인스턴스 생성 및 관리
+//         * Hilt가 자동 생성된 종속 항목 컨테이너에서 빌드한 인스턴스를 사용하여 onAttach() 수명 주기 메서드 내에서 필드를 채움
+//         */
+//        logger = (context.applicationContext as LogApplication).serviceLocator.loggerLocalDataSource
+//        dateFormatter =
+//            (context.applicationContext as LogApplication).serviceLocator.provideDateFormatter()
+//    }
 
     override fun onResume() {
         super.onResume()

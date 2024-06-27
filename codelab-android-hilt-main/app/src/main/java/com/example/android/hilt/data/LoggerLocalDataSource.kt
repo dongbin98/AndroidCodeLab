@@ -20,11 +20,15 @@ import android.os.Handler
 import android.os.Looper
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
- * Data manager class that handles data manipulation between the database and the UI.
+ * 유형의 인스턴스 제공 방법을 Hilt에 알리려면 삽입하려는 클래스의 생성자에 @Inject 주석을 추가하세요.
+ * 인스턴스 범위를 애플리케이션 컨테이너로 지정하는 주석은 @Singleton입니다.
  */
-class LoggerLocalDataSource(private val logDao: LogDao) {
+@Singleton
+class LoggerLocalDataSource @Inject constructor(private val logDao: LogDao) {
 
     private val executorService: ExecutorService = Executors.newFixedThreadPool(4)
     private val mainThreadHandler by lazy {
