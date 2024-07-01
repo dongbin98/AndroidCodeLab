@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">codelab-android-compose-basic-layout</string>
+    <string name="placeholder_search">검색</string>
+    <string name="ab1_inversions">조화</string>
+    <string name="fc2_nature_meditations">자연 속 명상</string>
+</resources>
