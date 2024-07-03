@@ -3,4 +3,8 @@
     <string name="placeholder_search">검색</string>
     <string name="ab1_inversions">조화</string>
     <string name="fc2_nature_meditations">자연 속 명상</string>
+    <string name="align_your_body">Align your Body</string>
+    <string name="favorite_collections">Favorite Collections</string>
+    <string name="bottom_navigation_home">홈</string>
+    <string name="bottom_navigation_profile">프로필</string>
 </resources>
